@@ -18,8 +18,6 @@ if [ "$file_count" -ge "$amount_backup" ]; then
 old_file=`ls -t "$backup_dir" | tail -n 1`
 rm /home/aleks/"$backup_dir"/"$old_file"
 mv "$dir_backup-$date_now".tar.gz "$backup_dir"
-echo "The oldest archive dir $dir_backup is removed and the new one is added to the dir $backup_dir"
 else
 mv "$dir_backup-$date_now".tar.gz "$backup_dir"
-echo "New archive dir $dir_backup is added to the dir $backup_dir"
 fi
