@@ -1,0 +1,42 @@
+---
+ - name: Install Apache Web Server
+  hosts: all
+  become: yes
+  
+  vars:
+  source: ./Web.html
+  destin: /var/www/html
+
+  tasks: 
+  - block:
+
+  - name: Install Apache
+    apt name-apache2 state=latest
+
+  - name: Start and Enable
+    service: name=apache2 state=started enabled=yes 
+  when: ansible_os_family == "Ubuntu"
+
+  - block: 
+
+  - name: Install Apache
+    yum: name=httpd state=latest
+  - name: Start Apache
+  service: name=httpd state=started enabled=yes  
+   when: ansible_os_family == "RedHat"
+
+
+  -name: Copy Web.html on the servers
+   template: src={{ source }} dest={{ destin }} mode=0555
+
+   handlers: 
+   -name: Restart Apache
+    service: name=httpd state=restarted
+    when: ansible_os_family == "RedHat"
+
+   -name: Restart Apache
+    service: name=apache2 state=restarted
+   when: ansible_os_family == "Ubuntu"
+
+
+  
