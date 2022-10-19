@@ -1,0 +1,10 @@
+[servers]
+
+ubuntu ansible_host=54.91.14.152  ansible_user=ubuntu  ansible_ssh_private_key_file=usr2.pem
+
+[REDHAT]
+
+redhat ansible_host=34.201.73.250 ansible_user=redhat ansible_ssh_privete_key_file=redhat.pem
+
+
+
