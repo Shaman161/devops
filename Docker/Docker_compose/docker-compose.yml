@@ -6,8 +6,6 @@ services:
     build: ./centos
     ports:
       - "8085:80"
-    volumes:
-      - ./centos/WebPage.html:/usr/share/nginx/html
     container_name: centos
     networks:
       - server1
@@ -16,9 +14,7 @@ services:
   ubuntu20.04:
     build: ./ubuntu20.04
     ports:
-      - "8085:80"
-    volumes:
-      - ./ubuntu20.04/WebPage.html:/var/www/html
+      - "8086:80"
     container_name: ubuntu20.04
     networks:
       - server2
