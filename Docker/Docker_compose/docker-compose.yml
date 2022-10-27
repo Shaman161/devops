@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  centos:
+    build: ./centos
+    ports:
+      - "8085:80"
+    container_name: centos
+    networks:
+      - server1
+    restart: always
+
+  ubuntu20.04:
+    build: ./ubuntu20.04
+    ports:
+      - "8086:80"
+    container_name: ubuntu20.04
+    networks:
+      - server2
+    restart: always
+
+networks:
+  server1:
+  server2:
